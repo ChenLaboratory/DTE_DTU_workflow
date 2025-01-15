@@ -5,15 +5,27 @@ library(RColorBrewer)
 
 salmon_dir <- "results/salmon_output"
 samples <- list.files(salmon_dir)
+samples
+
+targets <- read.delim("data/targets.txt", row.names = 1)
+targets
+
+# groups <- factor(targets$CellLine)
+# groups
+# 
+# m <- match(substr(samples, 1, 11),
+#            substr(targets$SRA, 1, 11))
 
 counts <- catchSalmon(file.path(salmon_dir, samples))
+# colnames(counts$counts) <- rownames(targets)[m]
+# colnames(counts$counts) <- rownames(targets)
 
+# y <- DGEList(counts = counts$counts / counts$annotation$Overdispersion, 
+#              genes = counts$annotation, group = groups)
 y <- DGEList(counts = counts$counts / counts$annotation$Overdispersion, 
-             genes = counts$annotation)
+             genes = counts$annotation, group = factor(targets$CellLine))
 
-colnames(y) <- sub("results/salmon_output/", "", colnames(y))
-
-y$samples$group <- factor(rep(c("H1975", "HCC827"), each = 3))
+colnames(y) <- rownames(targets)
 
 transcript_annotation <- read.csv("data/reference/transcript_annotation.csv")
 
