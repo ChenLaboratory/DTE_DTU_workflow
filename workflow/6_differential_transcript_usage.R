@@ -16,7 +16,7 @@ ts_simes <- topSpliceDGE(ds,
 # print the number of significant differentially spliced genes (simes test)
 table(ts_simes$FDR < 0.05)
 # print top differentially spliced genes (simes test)
-head(ts_simes)
+topSpliceDGE(ds, test = "Simes")
 # generate a list of all differentially spliced transcripts
 ts_transcript <- topSpliceDGE(ds, 
                               test = "exon", number = Inf)

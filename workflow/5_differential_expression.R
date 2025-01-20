@@ -16,7 +16,5 @@ summary(is_de)
 topTags(tr)
 # MD plot
 # pdf("results/figure/MD.pdf", height = 4, width = 8)
-plotMD(res, 
-       status = is_de,
-       main = "HCC827 vs H1975")
+plotMD(tr, main = "HCC827 vs H1975")
 # dev.off()
