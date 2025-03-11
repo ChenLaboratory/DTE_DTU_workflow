@@ -5,25 +5,26 @@
 # make contrast 
 contrast <- makeContrasts(HCC827 - H1975, levels = design)
 # test for differential transcript usage for the specified contrast
-ds <- diffSpliceDGE(fit, contrast = contrast, 
-                    geneid = "gene_id", exonid = "transcript_id")
+ds <- diffSplice(fit, contrast = contrast, 
+                 geneid = "gene_id", exonid = "transcript_id",
+                 nexons.approx = 20)
 # generate a list of all differentially spliced genes (simes test)
-ts_simes <- topSpliceDGE(ds, 
-                         test = "Simes", number = Inf)
+ts_simes <- topSplice(ds, 
+                      test = "simes", number = Inf)
 # # add gene symbol to the list for annotation
 # ts_simes$symbol <- transcript_annotation$symbol[
 #   match(ts_simes$gene_id, transcript_annotation$gene_id)]
 # print the number of significant differentially spliced genes (simes test)
 table(ts_simes$FDR < 0.05)
 # print top differentially spliced genes (simes test)
-topSpliceDGE(ds, test = "Simes")
+topSplice(ds, test = "simes")
 # generate a list of all differentially spliced transcripts
-ts_transcript <- topSpliceDGE(ds, 
-                              test = "exon", number = Inf)
+ts_transcript <- topSplice(ds, 
+                              test = "t", number = Inf)
 # print the number of significant differentially spliced transcripts
 table(ts_transcript$FDR < 0.05)
 # print top differentially spliced transcripts
-topSpliceDGE(ds, test = "exon")
+topSplice(ds, test = "t")
 
 #-------------- Results visualization
 
