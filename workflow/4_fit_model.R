@@ -8,7 +8,7 @@ colnames(design) <- sub("y$samples$group", "", colnames(design), fixed = TRUE)
 # model fitting
 y <- estimateDisp(y, design = design)
 
-fit <- glmQLFit(y, design = design, legacy = FALSE)
+fit <- glmQLFit(y, design = design)
 # pdf("results/figure/BCV_QL.pdf", height = 6, width = 5)
 # par(mfrow = c(2, 1))
 plotBCV(y)
