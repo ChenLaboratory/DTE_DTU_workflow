@@ -15,6 +15,6 @@ summary(is_de)
 # top DE results
 topTags(res)
 # MD plot
-# pdf("results/figure/MD.pdf", height = 4, width = 8)
-plotMD(res, main = "HCC827 vs H1975")
-# dev.off()
+pdf("results/figure/MD.pdf", height = 6, width = 8)
+plotMD(res, main = "HCC827 vs H1975", cex = 0.3)
+dev.off()

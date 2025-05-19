@@ -6,8 +6,7 @@
 contrast <- makeContrasts(HCC827 - H1975, levels = design)
 # test for differential transcript usage for the specified contrast
 ds <- diffSplice(fit, contrast = contrast, 
-                 geneid = "gene_id", exonid = "transcript_id",
-                 nexons.approx = 20)
+                 geneid = "gene_id", exonid = "transcript_id")
 # generate a list of all differentially spliced genes (simes test)
 ts_simes <- topSplice(ds, 
                       test = "simes", number = Inf)
@@ -43,11 +42,11 @@ ann_colors = list(
   group = c(H1975 = "red", HCC827 = "blue")
 )
 rownames(annotation_col) <- colnames(y)
-# pdf("results/figure/DTU_heatmap_scaled_count.pdf", height = 5, width = 5)
+pdf("results/figure/DTU_heatmap_scaled_count.pdf", height = 3, width = 5)
 pheatmap(dat, scale = "column", cluster_cols = FALSE, 
          annotation_col = annotation_col, annotation_colors = ann_colors,
          main="ZNF880")
-# dev.off()
+dev.off()
 
 
 # make bar plots to visualize the transcript usage
@@ -68,7 +67,7 @@ names(transcript_colors) <- transcript_annotation$transcript_id[
   transcript_annotation$gene_id == "CHM13_G0029458"]
 # make stacked proportional bar plot to visualize the transcript usage
 library(ggplot2)
-# pdf("results/figure/DTU_barplot.pdf", height = 5, width = 5)
+pdf("results/figure/DTU_barplot.pdf", height = 3, width = 5)
 ggplot(dat, aes(x = sample, y = count, fill = transcript)) +
   geom_bar(stat = "identity", position = position_fill()) +
   facet_grid(cols = vars(group), scales = "free") +
@@ -76,7 +75,7 @@ ggplot(dat, aes(x = sample, y = count, fill = transcript)) +
   theme_bw() +
   theme(axis.text.x = element_text(angle = 30, hjust = 1)) +
   scale_fill_manual(values = transcript_colors)
-# dev.off()
+dev.off()
 
 # Visualize annotation transcripts
 gff <- rtracklayer::import("data/reference/chm13.draft_v2.0.gene_annotation.gff3")
