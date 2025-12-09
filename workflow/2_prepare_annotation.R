@@ -29,5 +29,6 @@ transcript_annotation$symbol <- ave(
   }
 )
 
-write.csv(transcript_annotation, "data/reference/transcript_annotation.csv", row.names = FALSE)
+write.csv(transcript_annotation, "data/reference/transcript_annotation.csv", 
+          row.names = FALSE)
 print(Sys.time())

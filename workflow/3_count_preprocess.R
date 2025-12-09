@@ -1,7 +1,5 @@
 library(edgeR)
 library(limma)
-library(stringr)
-library(RColorBrewer)
 
 salmon_dir <- "results/salmon_output"
 samples <- list.files(salmon_dir)
