@@ -5,16 +5,15 @@
 contrast <- makeContrasts(HCC827 - H1975, levels = design)
 
 res <- glmQLFTest(fit, contrast = contrast)
-# examine number of DE genes
-summary(decideTests(res))
-# # test for logFC threshold
-# tr <- glmTreat(fit, contrast = contrast, 
-#                lfc = log2(1.5))
+
+# test for DE
 is_de <- decideTests(res)
 summary(is_de)
+
 # top DE results
 topTags(res)
-# MD plot
-pdf("results/figure/MD.pdf", height = 5, width = 8)
+
+# Figure 4a
+# pdf("results/figure/MD.pdf", height = 5, width = 8)
 plotMD(res, main = "HCC827 vs H1975", cex = 0.3)
-dev.off()
+# dev.off()

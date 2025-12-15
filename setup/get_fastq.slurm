@@ -3,14 +3,17 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=2G
 #SBATCH --job-name=sra_download
-#SBATCH --mail-user=dong.x@wehi.edu.au
-#SBATCH --mail-type=BEGIN,END,FAIL
+
+# NOTE: This script is designed to be used on Slurm. sra-toolkit is required to be pre-installed as a Slurm module.
+# NOTE: if you want to run it directory on a UNIX environment without using Slurm, make sure sra-toolkit is installed and added to your PATH and skip line 14.
+
+# USAGE: sbatch get_fastq.slurm <PROJECT_DIR> <SAMPLE> # replace <PROJECT_DIR> with your project directory and replace <SAMPLE> with the SRA accession of one sample
 
 module load sra-toolkit
 
-cd /vast/projects/lupus/xueyi/NatProt_LUAD
+cd $1
 
-## Extract fastq
-	fasterq-dump -O /vast/projects/lupus/xueyi/NatProt_LUAD/data/reads /vast/projects/lupus/xueyi/NatProt_LUAD/data/reads/$1/`ls ./$1`
-	gzip /vast/projects/lupus/xueyi/NatProt_LUAD/data/reads/$1\_1.fastq
-	gzip /vast/projects/lupus/xueyi/NatProt_LUAD/data/reads/$1\_2.fastq
+# Extract fastq
+fasterq-dump -O data/reads data/reads/$2/`ls ./$2`
+gzip data/reads/$2\_1.fastq
+gzip data/reads/$2\_2.fastq

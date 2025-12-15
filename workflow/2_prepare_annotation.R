@@ -1,14 +1,11 @@
-# print current time for timing purpose
-print(Sys.time())
-
 library(rtracklayer)
 gff <- import("data/reference/chm13.draft_v2.0.gene_annotation.gff3")
 
 transcripts <- gff[gff$type == "transcript", ]
 
 transcript_annotation <- data.frame(
-  transcript_id = transcripts$ID,
   gene_id = transcripts$gene_id,
+  transcript_id = transcripts$ID,
   ensembl = substr(transcripts$source_transcript, 1, 15),
   gene = substr(transcripts$source_gene, 1, 15),
   symbol = transcripts$gene_name,
@@ -31,4 +28,3 @@ transcript_annotation$symbol <- ave(
 
 write.csv(transcript_annotation, "data/reference/transcript_annotation.csv", 
           row.names = FALSE)
-print(Sys.time())
