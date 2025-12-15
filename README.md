@@ -4,7 +4,7 @@ This repository contains scripts to reproduce the analysis in the following work
 
 **Differential transcript expression and differential transcript usage using Salmon, edgeR v4 and the human T2T reference**
 
-Xueyi Dong, Junli Nie, Gordon K. Smyth, Yunshun Chen
+Xueyi Dong, Lizhong Chen, Junli Nie, Gordon K. Smyth, Yunshun Chen
 
 ## Example RNA-seq data availability
 
