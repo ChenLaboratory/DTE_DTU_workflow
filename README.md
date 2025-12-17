@@ -1,4 +1,4 @@
-# Transcript-level RNA-seq data analysis using human T2T reference
+# Transcript-level RNA-seq data analysis using Salmon, edgeR v4 and the human T2T reference
 
 This repository contains scripts to reproduce the analysis in the following workflow paper:
 
