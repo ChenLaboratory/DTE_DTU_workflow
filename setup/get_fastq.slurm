@@ -5,7 +5,7 @@
 #SBATCH --job-name=sra_download
 
 # NOTE: This script is designed to be used on Slurm. sra-toolkit is required to be pre-installed as a Slurm module.
-# NOTE: if you want to run it directory on a UNIX environment without using Slurm, make sure sra-toolkit is installed and added to your PATH and skip line 14.
+# NOTE: if you want to run it directory on a UNIX environment without using Slurm, make sure sra-toolkit is installed and added to your PATH and skip line 12.
 
 # USAGE: sbatch get_fastq.slurm <PROJECT_DIR> <SAMPLE> # replace <PROJECT_DIR> with your project directory and replace <SAMPLE> with the SRA accession of one sample
 
