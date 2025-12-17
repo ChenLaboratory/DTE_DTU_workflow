@@ -60,6 +60,8 @@ The protocol is dependent on the following software:
 
 The protocol has been tested with SRA Toolkit version 3.1.0, GffRead version 0.12.7, Salmon version 1.10.0, R version 4.5.2. The R session information from our test run can be found in the "Session information" section of the [expected output](results/expected_workflow_output.html).
 
+Typically, installing all the necessary software takes about 2 to 15 minutes, depending on your computer and network environment. 
+
 ## Instructions for running the workflow
 
 ### Running the workflow on example data
