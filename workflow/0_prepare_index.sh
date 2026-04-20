@@ -12,10 +12,10 @@ cat data/reference/transcripts.fa \
   > data/reference/gentrome.fa
 
 # 3.	Extract the name of the genome targets to create a list of the decoys
-grep "^>" data/reference/chm13v2.0_maskedY.fa \
-  | cut -d " " -f 1\
-  > data/reference/decoys.txt
-sed -i.bak -e 's/>//g' data/reference/decoys.txt
+grep "^>" data/reference/chm13v2.0_maskedY.fa > data/reference/decoys.txt 
+cut -d " " -f 1 data/reference/decoys.txt > data/reference/decoys.tmp 
+sed 's/^>//' data/reference/decoys.tmp > data/reference/decoys.txt 
+rm data/reference/decoys.tmp 
 
 # 4.	Build decoy-aware transcriptome index
 salmon index -t data/reference/gentrome.fa \

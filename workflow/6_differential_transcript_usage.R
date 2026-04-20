@@ -23,6 +23,11 @@ table(ts_transcript$FDR < 0.05)
 # print top differentially spliced transcripts
 topSplice(ds, test = "t")
 
+# save complete DTU results tables into TSV files
+write.table(ts_simes, file = "results/DTU_gene_results.tsv", sep = "\t")
+write.table(ts_transcript, file = "results/DTU_transcript_results.tsv", 
+            sep = "\t")
+
 # calculate TPM and expression proportion of transcripts
 TPM <- tpm(y, effective.tx.length = fit$genes$EffectiveLength,
            rta.overdispersion = fit$genes$Overdispersion)
@@ -31,6 +36,12 @@ TPMProp <- tpmProp(TPM, geneid = y$genes$gene_id)
 g <- which(y$genes$gene_id == "CHM13_G0029458")
 TPM[g, ]
 TPMProp[g, ]
+
+# add annotation to transcript expression proportion data frame and save it into TSV file
+m <- match(rownames(TPMProp), transcript_annotation$transcript_id)
+TPMProp <- cbind(transcript_annotation[m, ], TPMProp)
+head(TPMProp)
+write.table(TPMProp, file = "results/transcript_proportions.tsv")
 
 # Results visualization
 # make heatmaps to visualize the transcript usage
