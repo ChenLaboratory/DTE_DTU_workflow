@@ -1,3 +1,4 @@
+mkdir -p data/reads
 for SAMPLE in SRR1428605{7..9} SRR14286066 SRR14286069 SRR3176144{1..2} 
   do 
  	prefetch  $SAMPLE --output-directory data/reads 
