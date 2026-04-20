@@ -1,0 +1,131 @@
+---
+title: "Differential transcript expression and differential transcript usage using Salmon, edgeR v4 and the human T2T reference"
+author: "Xueyi Dong"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 4
+    code_folding: show
+    toc_float: true
+    number_sections: true
+---
+
+<style type="text/css">
+.main-container {
+  max-width: 1800px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+```{r setup, include=FALSE}
+options(width = 80, digits = 3, message = FALSE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+knitr::opts_knit$set(root.dir = "/vast/scratch/users/dong.x/docker/NatProt_LUAD")
+```
+
+# Introduction
+
+This document composes different stages of this transcript-level analysis protocol and displays the expected outputs when running on the test data we provided.
+
+Except for the packages required by the protocol, we use an addition package `tictoc` to calculate the time required by each stage that runs R code. The elapsed time of each R-based stage are printed at the end of each stage.
+
+All code shown in this document is imported from scripts for each stage. Code in stage 0 and Stage 1 are UNIX commands and should be run in the terminal, while code in stage 2-6 are R code and should be run in R.
+
+# Stage 0: preparation of transcriptome index
+
+This stage should be run in bash.
+
+```{bash stage0, file="workflow/0_prepare_index.sh", echo=TRUE, eval=FALSE}
+```
+
+# Stage 1: transcript quantification (quasi-mapping/selective alignment)
+
+This stage should be run in bash.
+
+```{bash stage1, file="workflow/1_salmon_quantify.sh", echo=TRUE, eval=FALSE}
+```
+
+# Stage 2: genes and transcripts annotation
+
+```{r tic2}
+library(tictoc)
+tic()
+```
+
+```{r stage2, file="workflow/2_prepare_annotation.R", echo=TRUE, eval=TRUE}
+```
+
+```{r toc2}
+toc()
+```
+
+
+# Stage 3: transcript-level count data preprocessing
+
+```{r tic3}
+tic()
+```
+
+```{r stage3, file="workflow/3_count_preprocess.R", echo=TRUE, eval=TRUE, cache=FALSE}
+```
+
+```{r toc3}
+toc()
+```
+
+# Stage 4: generalized linear model fitting
+
+```{r tic4}
+tic()
+```
+
+```{r stage4, file="workflow/4_fit_model.R", echo=TRUE, eval=TRUE, cache=FALSE}
+```
+
+```{r toc4}
+toc()
+```
+
+# Stage 5: differential expression analysis
+
+```{r tic5}
+tic()
+```
+
+```{r stage5, file="workflow/5_differential_expression.R", echo=TRUE, eval=TRUE, cache=FALSE}
+```
+
+```{r toc5}
+toc()
+```
+
+# Stage 6: differential usage analysis
+
+```{r lib, echo=FALSE, eval=TRUE}
+library(limma)
+library(edgeR)
+library(RColorBrewer)
+```
+
+```{r tic6}
+tic()
+```
+
+```{r stage6, file="workflow/6_differential_transcript_usage.R", echo=TRUE, eval=TRUE, cache=FALSE, message = FALSE}
+
+```
+
+```{r toc6}
+toc()
+```
+
+# Session information
+
+The R session information including version information of used packages is shown below.
+
+```{r}
+sessionInfo()
+```
+
