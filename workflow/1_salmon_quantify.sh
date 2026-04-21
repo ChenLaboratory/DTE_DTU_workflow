@@ -5,8 +5,8 @@ for SAMPLE in SRR1428605{7..9} SRR14286066 SRR14286069 SRR31761441_merged; do
   mkdir -p results/salmon_output/$SAMPLE
   salmon quant -i data/reference/salmon_index\
     -l A \
-    -1 data/reads/$SAMPLE\_R1.fastq.gz \
-    -2 data/reads/$SAMPLE\_R2.fastq.gz \
+    -1 data/reads/$SAMPLE\_1.fastq.gz \
+    -2 data/reads/$SAMPLE\_2.fastq.gz \
     -o results/salmon_output/$SAMPLE \
     -p  8 \
     --numGibbsSamples 50

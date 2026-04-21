@@ -38,8 +38,7 @@ TPM[g, ]
 TPMProp[g, ]
 
 # add annotation to transcript expression proportion data frame and save it into TSV file
-m <- match(rownames(TPMProp), transcript_annotation$transcript_id)
-TPMProp <- cbind(transcript_annotation[m, ], TPMProp)
+TPMProp <- cbind(y$genes, TPMProp)
 head(TPMProp)
 write.table(TPMProp, file = "results/transcript_proportions.tsv")
 
