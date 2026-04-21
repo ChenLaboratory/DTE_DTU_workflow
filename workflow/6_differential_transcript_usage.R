@@ -38,9 +38,9 @@ TPM[g, ]
 TPMProp[g, ]
 
 # add annotation to transcript expression proportion data frame and save it into TSV file
-TPMProp <- cbind(y$genes, TPMProp)
-head(TPMProp)
-write.table(TPMProp, file = "results/transcript_proportions.tsv")
+AnnotatedTPMProp <- cbind(y$genes, TPMProp)
+head(AnnotatedTPMProp)
+write.table(AnnotatedTPMProp, file = "results/transcript_proportions.tsv")
 
 # Results visualization
 # make heatmaps to visualize the transcript usage

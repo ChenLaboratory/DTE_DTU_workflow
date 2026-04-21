@@ -22,7 +22,7 @@ output:
 ```{r setup, include=FALSE}
 options(width = 80, digits = 3, message = FALSE)
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
-knitr::opts_knit$set(root.dir = "/vast/scratch/users/dong.x/docker/NatProt_LUAD")
+knitr::opts_knit$set(root.dir = "/vast/scratch/users/dong.x/test_workflow/DTE_DTU_workflow")
 ```
 
 # Introduction
@@ -50,6 +50,9 @@ This stage should be run in bash.
 # Stage 2: genes and transcripts annotation
 
 ```{r tic2}
+if (!requireNamespace("tictoc", quietly = TRUE)) {
+    install.packages("tictoc")
+}
 library(tictoc)
 tic()
 ```

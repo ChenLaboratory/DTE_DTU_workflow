@@ -29,9 +29,9 @@ fdr_cutoff <- 0.05
 tt$table$de_status <- ifelse(tt$table$FDR > fdr_cutoff, "NotSig", 
                          ifelse(tt$table$logFC > 0, "Up", "Down"))
 
-# Create a column for highlighting top 5 DE transcripts
-tt$table$top5 <- ""
-tt$table$top5[1:5] <- tt$table$transcript_id[1:5]
+# Create a column for highlighting top 2 DE transcripts
+tt$table$top2 <- ""
+tt$table$top5[1:2] <- tt$table$transcript_id[1:2]
 # pdf("results/figure/volcano_small.pdf", height = 5, width = 4)
 ggplot(tt$table, aes(x = logFC, y = -log10(FDR),  label = top5)) +
   geom_point(aes(colour = de_status), size = 0.3) +

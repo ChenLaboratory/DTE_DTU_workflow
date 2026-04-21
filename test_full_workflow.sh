@@ -26,8 +26,8 @@ module load apptainer
 # echo "Stage 0: preparation of transcriptome index "
 # apptainer exec dte_dtu_workflow_latest.sif bash workflow/0_prepare_index.sh
 
-echo "Stage 1: transcript quantification"
-apptainer exec dte_dtu_workflow_latest.sif bash workflow/1_salmon_quantify.sh
+# echo "Stage 1: transcript quantification"
+# apptainer exec dte_dtu_workflow_latest.sif bash workflow/1_salmon_quantify.sh
 
 echo "Stage 2 to 6 are run in R. Here we knit the Rmd report."
 apptainer exec dte_dtu_workflow_latest.sif Rscript -e "rmarkdown::render('workflow/workflow.Rmd')"
