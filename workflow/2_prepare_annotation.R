@@ -14,17 +14,19 @@ transcript_annotation <- data.frame(
   chromosome = as.character(seqnames(transcripts))
 )
 
-transcript_annotation$symbol <- unlist(
+symbols <- unlist(
   lapply(split(transcript_annotation, transcript_annotation$gene_id),
          function(df) {
            x <- df$symbol
            if (length(unique(x)) > 1) {
-             unique(x[!grepl("^MSTRG", x)])
+             unique(x[!grepl("^MSTRG", x)])[1]
            } else {
-             x
+             unique(x)
            }
          })
-)[match(transcript_annotation$gene_id, unique(transcript_annotation$gene_id))]
+)
+transcript_annotation$symbol <- symbols[match(transcript_annotation$gene_id, 
+                                              names(symbols))]
 
 write.csv(transcript_annotation, "data/reference/transcript_annotation.csv", 
           row.names = FALSE)
