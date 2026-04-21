@@ -26,15 +26,15 @@ plotMD(res, main = "HCC827 vs H1975", cex = 0.3)
 library(ggplot2)
 # library(ggrepel)
 fdr_cutoff <- 0.05
-tt$table$de_status <- ifelse(tt$table$FDR > fdr_cutoff, "NotSig", 
+tt$table$DE_status <- ifelse(tt$table$FDR > fdr_cutoff, "NotSig", 
                          ifelse(tt$table$logFC > 0, "Up", "Down"))
 
 # Create a column for highlighting top 2 DE transcripts
 tt$table$top2 <- ""
-tt$table$top5[1:2] <- tt$table$transcript_id[1:2]
+tt$table$top2[1:2] <- tt$table$transcript_id[1:2]
 # pdf("results/figure/volcano_small.pdf", height = 5, width = 4)
-ggplot(tt$table, aes(x = logFC, y = -log10(FDR),  label = top5)) +
-  geom_point(aes(colour = de_status), size = 0.3) +
+ggplot(tt$table, aes(x = logFC, y = -log10(FDR),  label = top2)) +
+  geom_point(aes(colour = DE_status), size = 0.3) +
   geom_text(hjust = -0.05) +
   scale_colour_manual(values = c(
     "Up" = "red",

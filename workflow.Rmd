@@ -21,8 +21,7 @@ output:
 
 ```{r setup, include=FALSE}
 options(width = 80, digits = 3, message = FALSE)
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
-knitr::opts_knit$set(root.dir = "/vast/scratch/users/dong.x/test_workflow/DTE_DTU_workflow")
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message=FALSE)
 ```
 
 # Introduction
@@ -57,7 +56,7 @@ library(tictoc)
 tic()
 ```
 
-```{r stage2, file="workflow/2_prepare_annotation.R", echo=TRUE, eval=TRUE}
+```{r stage2, file="workflow/2_prepare_annotation.R"}
 ```
 
 ```{r toc2}
@@ -71,7 +70,7 @@ toc()
 tic()
 ```
 
-```{r stage3, file="workflow/3_count_preprocess.R", echo=TRUE, eval=TRUE, cache=FALSE}
+```{r stage3, file="workflow/3_count_preprocess.R"}
 ```
 
 ```{r toc3}
@@ -84,7 +83,7 @@ toc()
 tic()
 ```
 
-```{r stage4, file="workflow/4_fit_model.R", echo=TRUE, eval=TRUE, cache=FALSE}
+```{r stage4, file="workflow/4_fit_model.R"}
 ```
 
 ```{r toc4}
@@ -97,7 +96,7 @@ toc()
 tic()
 ```
 
-```{r stage5, file="workflow/5_differential_expression.R", echo=TRUE, eval=TRUE, cache=FALSE}
+```{r stage5, file="workflow/5_differential_expression.R"}
 ```
 
 ```{r toc5}
@@ -106,17 +105,18 @@ toc()
 
 # Stage 6: differential usage analysis
 
-```{r lib, echo=FALSE, eval=TRUE}
-library(limma)
-library(edgeR)
-library(RColorBrewer)
-```
+<!-- ```{r lib, echo=FALSE, eval=TRUE} -->
+<!-- library(limma) -->
+<!-- library(edgeR) -->
+<!-- library(RColorBrewer) -->
+<!-- ``` -->
+
 
 ```{r tic6}
 tic()
 ```
 
-```{r stage6, file="workflow/6_differential_transcript_usage.R", echo=TRUE, eval=TRUE, cache=FALSE, message = FALSE}
+```{r stage6, file="workflow/6_differential_transcript_usage.R"}
 
 ```
 
@@ -128,7 +128,7 @@ toc()
 
 The R session information including version information of used packages is shown below.
 
-```{r}
+```{r sesInfo}
 sessionInfo()
 ```
 
