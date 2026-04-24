@@ -4,6 +4,7 @@
 # create design
 design <- model.matrix(~ 0 + y$samples$group)
 colnames(design) <- sub("y$samples$group", "", colnames(design), fixed = TRUE)
+design
 
 # model fitting
 y <- estimateDisp(y, design = design)
