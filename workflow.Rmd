@@ -1,5 +1,5 @@
 ---
-title: "Differential transcript expression and differential transcript usage using Salmon, edgeR v4 and the human T2T reference"
+title: "Differential transcript expression and differential transcript usage using Salmon and edgeR v4"
 author: "Xueyi Dong"
 date: "`r Sys.Date()`"
 output:
@@ -26,22 +26,22 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message=FALSE)
 
 # Introduction
 
-This document composes different stages of this transcript-level analysis protocol and displays the expected outputs when running on the test data we provided.
+This document composes different stages of the differential transcript expression and differential transcript usage analysis protocol and displays the expected outputs when running on the test data we provided.
 
-Except for the packages required by the protocol, we use an addition package `tictoc` to calculate the time required by each stage that runs R code. The elapsed time of each R-based stage are printed at the end of each stage.
+Except for the packages required by the protocol, we use an addition package `tictoc` to calculate the time required by each stage that runs R code. The elapsed time of each R-based stage is printed at the end of each stage.
 
-All code shown in this document is imported from scripts for each stage. Code in stage 0 and Stage 1 are UNIX commands and should be run in the terminal, while code in stage 2-6 are R code and should be run in R.
+All code shown in the report is imported from scripts for each stage. Code in Stage 0 and Stage 1 are UNIX commands and should be run in the terminal, while code in Stages 2-6 are R code and should be run in R.
 
 # Stage 0: preparation of transcriptome index
 
-This stage should be run in bash.
+This stage should be run in bash. Here, we only display the commands.
 
 ```{bash stage0, file="workflow/0_prepare_index.sh", echo=TRUE, eval=FALSE}
 ```
 
 # Stage 1: transcript quantification (quasi-mapping/selective alignment)
 
-This stage should be run in bash.
+This stage should be run in bash. Here, we only display the commands.
 
 ```{bash stage1, file="workflow/1_salmon_quantify.sh", echo=TRUE, eval=FALSE}
 ```
