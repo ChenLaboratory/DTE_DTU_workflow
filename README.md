@@ -79,7 +79,7 @@ The protocol is dependent on the following software:
    
 Typically, installing all the necessary software takes about 2 to 15 minutes, depending on your computer and network environment. 
 
-The protocol has been tested with SRA Toolkit version 3.1.0, GffRead version 0.12.7, Salmon version 1.10.0, R version 4.5.2. The R session information from our test run can be found in the "Session information" section of the [expected output](https://chenlaboratory.github.io/DTE_DTU_workflow/).
+The protocol has been tested with SRA Toolkit version 3.1.0, GffRead version 0.12.7, Salmon version 1.10.0, R version 4.5.2. The R session information from our test run can be found in the "Session information" section of the [expected output](https://chenlaboratory.github.io/DTE_DTU_workflow/#9_Session_information).
 
 ## Instructions for running the workflow
 
@@ -93,18 +93,18 @@ To make sure the workflow can be reproduced, the users should follow the followi
 
 2. Install required software tools :
 
-	**Option A**: Install the required software manually
+**Option A**: Install the required software manually
 	
   -   Follow the instructions in the "Equipment setup" section in the paper to install SRA Toolkit, pigz, GffRead, Salmon and R.
 
-  -   Run [`install_R_packages.R`](setup/install_R_packages.R) in R to install required R packages.
-
-	**Option B**: Using our Docker container image
+  -   Run [`setup/install_R_packages.R`](setup/install_R_packages.R) in R to install required R packages.
 	
- -   For Docker users, the image can be retrieved using the following command:
+**Option B**: Using our Docker container image
+	
+  -   For Docker users, the image can be retrieved using the following command:
 `docker pull xueyidong/dte_dtu_workflow:latest`
 
- -   For users operating on High-Performance Computing (HPC) clusters where Docker is unavailable, this image is also fully compatible with Apptainer. The image can be pulled and converted into a Singularity Image Format (.sif) file using the following command:
+  -   For users operating on High-Performance Computing (HPC) clusters where Docker is unavailable, this image is also fully compatible with Apptainer. The image can be pulled and converted into a Singularity Image Format (.sif) file using the following command:
 `apptainer pull dte_dtu_workflow.sif xueyidong/dte_dtu_workflow:latest`
 
 3. Download and prepare data:
